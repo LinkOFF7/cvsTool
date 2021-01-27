@@ -1,16 +1,12 @@
 # Usage:
 
 ```sh
-cvsTool.exe [argument] <inputfile>
-
-Arguments:
--d:      Convert CVS file to JSON
--e:      Convert JSON to CVS
+cvsTool.exe <inputfile>
 ```
 
 # Examples:
 Convert CVS to JSON:
-```cvsTool.exe -d swg_stringtable_en.cvs```
+```cvsTool.exe swg_stringtable_en.cvs```
 
 Convert JSON to CVS (required original cvs file!):
-```cvsTool.exe -e swg_stringtable_en.json```
+```cvsTool.exe swg_stringtable_en.json```
