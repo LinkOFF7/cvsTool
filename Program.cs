@@ -12,21 +12,24 @@ namespace cvs
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            if(args == null || args.Length < 2)
+        if (args == null || args.Length < 1)
             {
                 PrintUsage();
             }
-            else if(args[0] == "-d")
+            else
             {
-                DecryptCVS(args[1]);
-                return;
-            }
-            else if(args[0] == "-e")
-            {
-                EncryptCVS(args[1]);
-                return;
+                string ext = Path.GetExtension(args[0]);
+
+                if (ext == ".cvs")
+                {
+                    DecryptCVS(args[0]);
+                    return;
+                }
+                else if (ext == ".json")
+                {
+                    EncryptCVS(args[0]);
+                    return;
+                }
             }
         } 
 
@@ -123,15 +126,13 @@ namespace cvs
             Console.WriteLine("by LinkOFF");
             Console.WriteLine("");
             Console.WriteLine("Usage:");
-            Console.WriteLine("cvsTool.exe [argument] <inputfile>");
+            Console.WriteLine("cvsTool.exe <inputfile>");
             Console.WriteLine("");
-            Console.WriteLine("Arguments:");
-            Console.WriteLine("-d:\tConvert CVS file to JSON");
-            Console.WriteLine("-e:\tConvert JSON to CVS");
+            Console.WriteLine("Convert CVS file to JSON: drag&drop cvs file");
+            Console.WriteLine("Convert JSON to CVS: drag&drop json file");
             Console.WriteLine("");
-            Console.WriteLine("Examples:");
-            Console.WriteLine("cvsTool.exe -d swg_stringtable_en.cvs");
-            Console.WriteLine("cvsTool.exe -e swg_stringtable_en.json");
+            Console.WriteLine("Example:");
+            Console.WriteLine("cvsTool.exe swg_stringtable_en.cvs");
             Console.WriteLine("");
             Console.WriteLine("Note:");
             Console.WriteLine("Convertion JSON to CVS option requires an original CVS file!");
